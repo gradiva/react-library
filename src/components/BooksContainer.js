@@ -3,18 +3,17 @@ import Book from './Book';
 
 class BooksContainer extends React.Component {
   render() {
-    const bookRows = [];
+    const { books } = this.props;
 
-    this.props.books.forEach((book) => {
-      bookRows.push(
-        <Book
-          title={book.title}
-          author={book.author}
-          year={book.year}
-          status={book.status}
-        />
-      );
-    });
+    const bookRows = books.map((book, index) => (
+      <Book
+        title={book.title}
+        author={book.author}
+        year={book.year}
+        status={book.status}
+        key={`book-${index}`}
+      />
+    ));
 
     return (
       <section className="books-container">

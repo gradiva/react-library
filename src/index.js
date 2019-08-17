@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import BooksContainer from './BooksContainer';
+import BooksContainer from './components/BooksContainer';
 
 class MyLibrary extends React.Component {
   render() {
     return (
-      <body>
+      <main>
         <BooksContainer books={this.props.books} />
-      </body>
+      </main>
     );
   }
 }
