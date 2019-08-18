@@ -5,6 +5,8 @@ class BooksContainer extends React.PureComponent {
   render() {
     const { books } = this.props;
 
+    console.log(books, books.map);
+
     const bookRows = books.map((book, index) => (
       <Book
         title={book.title}

@@ -1,10 +1,9 @@
 import React from 'react';
+import Button from './Button';
 
 class Book extends React.PureComponent {
   render() {
-    const {
-      title, author, year, status,
-    } = this.props;
+    const { title, author, year, status } = this.props;
 
     return (
       <div className="book">
@@ -17,6 +16,7 @@ class Book extends React.PureComponent {
           {' '}
           Read/Not Yet
         </div>
+        <Button />
       </div>
     );
   }

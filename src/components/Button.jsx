@@ -2,13 +2,15 @@ import React from 'react';
 
 class Button extends React.PureComponent {
   render() {
+    const { onClick } = this.props;
+
     return (
       <button
         className="button"
-        type={this.props.type}
-        onClick={() => alert('click')}
+        type="button"
+        onClick={onClick}
       >
-        {this.props.value}
+        Something
       </button>
     );
   }
