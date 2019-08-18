@@ -22,6 +22,7 @@ export default class MyLibrary extends React.PureComponent {
     this.state = getInitialState();
 
     this.addBook = this.addBook.bind(this);
+    this.removeBookById = this.removeBookById.bind(this);
   }
 
   addBook({ title, author, year, status }) {
@@ -52,10 +53,10 @@ export default class MyLibrary extends React.PureComponent {
 
     return (
       <main>
-        <Button />
+        <Button value="New Book" />
         <NewBookForm addBook={this.addBook} />
         <BooksContainer
-          removeBook={this.removeBookById}
+          removeBookById={this.removeBookById}
           books={books}
         />
       </main>

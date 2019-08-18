@@ -2,8 +2,20 @@ import React from 'react';
 import Button from './Button';
 
 class Book extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.onRemoveBookById = this.onRemoveBookById.bind(this);
+  }
+
+  onRemoveBookById() {
+    const { removeBookById, book } = this.props;
+    removeBookById(book.id);
+  }
+
   render() {
-    const { title, author, year, status } = this.props;
+    const { book } = this.props;
+    const { title, author, year, status } = book;
 
     return (
       <div className="book">
@@ -16,7 +28,7 @@ class Book extends React.PureComponent {
           {' '}
           Read/Not Yet
         </div>
-        <Button />
+        <Button onClick={this.onRemoveBookById} value="Delete" />
       </div>
     );
   }

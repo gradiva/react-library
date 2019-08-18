@@ -3,16 +3,12 @@ import Book from './Book';
 
 class BooksContainer extends React.PureComponent {
   render() {
-    const { books } = this.props;
-
-    console.log(books, books.map);
+    const { books, removeBookById } = this.props;
 
     const bookRows = books.map((book, index) => (
       <Book
-        title={book.title}
-        author={book.author}
-        year={book.year}
-        status={book.status}
+        book={book}
+        removeBookById={removeBookById}
         key={`book-${index}`}
       />
     ));

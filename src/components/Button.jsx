@@ -2,7 +2,7 @@ import React from 'react';
 
 class Button extends React.PureComponent {
   render() {
-    const { onClick } = this.props;
+    const { onClick, value } = this.props;
 
     return (
       <button
@@ -10,7 +10,7 @@ class Button extends React.PureComponent {
         type="button"
         onClick={onClick}
       >
-        Something
+        {value}
       </button>
     );
   }

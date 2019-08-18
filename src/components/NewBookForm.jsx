@@ -37,7 +37,7 @@ export default class NewBookForm extends React.PureComponent {
         <input ref={this.yearRef} type="number" name="year" />
         <input ref={this.statusRef} type="checkbox" name="status" />
 
-        <Button onClick={this.onAddBookClick} />
+        <Button onClick={this.onAddBookClick} value="Add Book" />
       </form>
     );
   }
