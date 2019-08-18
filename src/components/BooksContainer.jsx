@@ -1,7 +1,7 @@
 import React from 'react';
 import Book from './Book';
 
-class BooksContainer extends React.Component {
+class BooksContainer extends React.PureComponent {
   render() {
     const { books } = this.props;
 
@@ -22,7 +22,7 @@ class BooksContainer extends React.Component {
           <div>Author</div>
           <div>Year</div>
           <div>Status</div>
-          <div></div>
+          <div />
         </div>
         <div className="books-list">
           {bookRows}

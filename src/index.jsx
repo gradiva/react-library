@@ -1,17 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import BooksContainer from './components/BooksContainer';
-
-class MyLibrary extends React.Component {
-  render() {
-    return (
-      <main>
-        <BooksContainer books={this.props.books} />
-      </main>
-    );
-  }
-}
+import MyLibrary from './components/MyLibrary';
 
 const BOOKS = [
   { title: 'Anna Karenina', author: 'Leo Tolstoy', year: '1873', status: 'no' },
@@ -24,5 +14,5 @@ const BOOKS = [
 
 ReactDOM.render(
   <MyLibrary books={BOOKS} />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

@@ -1,8 +1,10 @@
 import React from 'react';
 
-class Book extends React.Component {
+class Book extends React.PureComponent {
   render() {
-    const { title, author, year, status } = this.props;
+    const {
+      title, author, year, status,
+    } = this.props;
 
     return (
       <div className="book">
@@ -10,9 +12,11 @@ class Book extends React.Component {
         <div>{author}</div>
         <div>{year}</div>
         <div>{status}</div>
-        <div><input type="checkbox" />
+        <div>
+          <input type="checkbox" />
           {' '}
-          Read/Not Yet</div>
+          Read/Not Yet
+        </div>
       </div>
     );
   }
