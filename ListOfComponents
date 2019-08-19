@@ -4,5 +4,5 @@ My library
   BooksList
     BooksListHeader
     BookRow
-      BookStatusDropdown
+      BookStatusCheckbox
       BookDeleteButton

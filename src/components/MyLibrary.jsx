@@ -6,12 +6,12 @@ import '../css/library.css';
 
 const getInitialState = () => ({
   books: [
-    { id: 'ssdf', title: 'Anna Karenina', author: 'Leo Tolstoy', year: '1873', status: 'no' },
-    { id: 'sdfs', title: 'Madame Bovary', author: 'Gustave Flaubert', year: '1856', status: 'no' },
-    { id: 'fdgf', title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: '1925', status: 'yes' },
-    { id: 'hjnv', title: 'Don Quixote', author: 'Miguel de Cervantes', year: '1605', status: 'yes' },
-    { id: 'cxvs', title: 'Lolita', author: 'Vladimir Nabokov', year: '1955', status: 'no' },
-    { id: 'cvbb', title: 'Ulysses', author: 'James Joyce', year: '1918', status: 'yes' },
+    { id: 'ssdf', title: 'Anna Karenina', author: 'Leo Tolstoy', year: '1873', hasRead: false },
+    { id: 'sdfs', title: 'Madame Bovary', author: 'Gustave Flaubert', year: '1856', hasRead: false },
+    { id: 'fdgf', title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: '1925', hasRead: true },
+    { id: 'hjnv', title: 'Don Quixote', author: 'Miguel de Cervantes', year: '1605', hasRead: true },
+    { id: 'cxvs', title: 'Lolita', author: 'Vladimir Nabokov', year: '1955', hasRead: false },
+    { id: 'cvbb', title: 'Ulysses', author: 'James Joyce', year: '1918', hasRead: true },
   ],
 });
 
@@ -24,15 +24,16 @@ export default class MyLibrary extends React.PureComponent {
 
     this.addBook = this.addBook.bind(this);
     this.removeBookById = this.removeBookById.bind(this);
+    this.toggleHasReadById = this.toggleHasReadById.bind(this);
   }
 
-  addBook({ title, author, year, status }) {
+  addBook({ title, author, year, hasRead }) {
     const newBook = {
       id: generateUID(),
       title,
       author,
       year,
-      status,
+      hasRead,
     };
 
     this.setState(({ books }) => ({
@@ -40,6 +41,21 @@ export default class MyLibrary extends React.PureComponent {
         ...books,
         newBook,
       ],
+    }));
+  }
+
+  toggleHasReadById(id) {
+    this.setState(({ books }) => ({
+      books: books.map((book) => {
+        if (book.id === id) {
+          return {
+            ...book,
+            hasRead: !book.hasRead,
+          };
+        }
+
+        return book;
+      }),
     }));
   }
 
@@ -58,6 +74,7 @@ export default class MyLibrary extends React.PureComponent {
         <NewBookForm addBook={this.addBook} />
         <BooksContainer
           removeBookById={this.removeBookById}
+          toggleHasReadById={this.toggleHasReadById}
           books={books}
         />
       </main>
