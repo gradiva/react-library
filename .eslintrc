@@ -10,5 +10,6 @@
     "no-console": "off",
     "no-param-reassign": "off",
     "object-curly-newline": "off",
+    "react/forbid-prop-types": "off"
   },
 }

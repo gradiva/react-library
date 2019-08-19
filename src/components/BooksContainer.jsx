@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
 class BooksContainer extends React.PureComponent {
   render() {
     const { books, removeBookById } = this.props;
 
-    const bookRows = books.map((book, index) => (
+    const bookRows = books.map((book) => (
       <Book
         book={book}
         removeBookById={removeBookById}
-        key={`book-${index}`}
+        key={`book-${book.id}`}
       />
     ));
 
@@ -29,5 +30,10 @@ class BooksContainer extends React.PureComponent {
     );
   }
 }
+
+BooksContainer.propTypes = {
+  books: PropTypes.array.isRequired,
+  removeBookById: PropTypes.func.isRequired,
+};
 
 export default BooksContainer;

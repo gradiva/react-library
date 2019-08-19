@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 class Book extends React.PureComponent {
@@ -33,5 +34,10 @@ class Book extends React.PureComponent {
     );
   }
 }
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  removeBookById: PropTypes.func.isRequired,
+};
 
 export default Book;
