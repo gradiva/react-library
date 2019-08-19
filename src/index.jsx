@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import MyLibrary from './components/MyLibrary';
+import './css/index.css';
 
 ReactDOM.render(
   <MyLibrary />,

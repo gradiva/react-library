@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import '../css/form.css';
 
 export default class NewBookForm extends React.PureComponent {
   constructor(props) {
@@ -33,11 +34,22 @@ export default class NewBookForm extends React.PureComponent {
   render() {
     return (
       <form className="book-form">
-        <input ref={this.titleRef} type="text" name="title" />
-        <input ref={this.authorRef} type="text" name="author" />
-        <input ref={this.yearRef} type="number" name="year" />
-        <input ref={this.statusRef} type="checkbox" name="status" />
-
+        <label htmlFor="title">
+          Title
+          <input ref={this.titleRef} type="text" name="title" />
+        </label>
+        <label htmlFor="author">
+          Author
+          <input ref={this.authorRef} type="text" name="author" />
+        </label>
+        <label htmlFor="year">
+          Year
+          <input ref={this.yearRef} type="number" name="year" />
+        </label>
+        <label htmlFor="status">
+          Status
+          <input ref={this.statusRef} type="checkbox" name="status" />
+        </label>
         <Button onClick={this.onAddBookClick} value="Add Book" />
       </form>
     );

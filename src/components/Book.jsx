@@ -20,10 +20,10 @@ class Book extends React.PureComponent {
 
     return (
       <div className="book">
-        <div>{title}</div>
-        <div>{author}</div>
-        <div>{year}</div>
-        <div>{status}</div>
+        <div className="title title-text">{title}</div>
+        <div className="author book-info">{author}</div>
+        <div className="year book-info">{year}</div>
+        <div className="status">{status}</div>
         <div>
           <input type="checkbox" />
           {' '}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/button.css';
 
 class Button extends React.PureComponent {
   render() {

@@ -2,6 +2,7 @@ import React from 'react';
 import BooksContainer from './BooksContainer';
 import Button from './Button';
 import NewBookForm from './NewBookForm';
+import '../css/library.css';
 
 const getInitialState = () => ({
   books: [
