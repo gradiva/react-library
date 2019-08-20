@@ -30,12 +30,13 @@ class Book extends React.PureComponent {
         <div className="title title-text">{title}</div>
         <div className="author book-info">{author}</div>
         <div className="year book-info">{year}</div>
-        <div>
+        <div className="status book-info">
           <SlideCheckbox
-            onClick={this.toggleHasRead}
+            value="Read"
+            name="read-status"
             checked={hasRead}
             className="read-status"
-            name="read-status"
+            onClick={this.toggleHasRead}
           />
         </div>
         <Button onClick={this.removeBook} value="Delete" />
