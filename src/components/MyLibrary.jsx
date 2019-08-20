@@ -70,7 +70,7 @@ export default class MyLibrary extends React.PureComponent {
 
     return (
       <main>
-        <Button value="New Book" />
+        <Button value="New Book" onClick={() => { }} />
         <NewBookForm addBook={this.addBook} />
         <BooksContainer
           removeBookById={this.removeBookById}

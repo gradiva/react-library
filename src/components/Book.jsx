@@ -23,7 +23,7 @@ class Book extends React.PureComponent {
 
   render() {
     const { book } = this.props;
-    const { title, author, year, hasRead } = book;
+    const { id, title, author, year, hasRead } = book;
 
     return (
       <div className="book">
@@ -32,11 +32,11 @@ class Book extends React.PureComponent {
         <div className="year book-info">{year}</div>
         <div className="status book-info">
           <SlideCheckbox
-            value="Read"
+            id={`has-read-slider-${id}`}
             name="read-status"
             checked={hasRead}
             className="read-status"
-            onClick={this.toggleHasRead}
+            onChange={this.toggleHasRead}
           />
         </div>
         <Button onClick={this.removeBook} value="Delete" />

@@ -4,17 +4,18 @@ import '../css/slidecheckbox.css';
 
 class SlideCheckbox extends React.PureComponent {
   render() {
-    const { value, name, checked, onClick } = this.props;
+    const { id, name, checked, onChange } = this.props;
 
     return (
-      <label className="switch" htmlFor={name}>
-        {value}
+      <label className="switch" htmlFor={id}>
         <input
           type="checkbox"
+          defaultChecked={checked}
           checked={checked}
-          className="checkbox"
+          id={id}
           name={name}
-          onClick={onClick}
+          className="checkbox"
+          onChange={onChange}
         />
         <div className="slider round" />
       </label>
@@ -23,10 +24,10 @@ class SlideCheckbox extends React.PureComponent {
 }
 
 SlideCheckbox.propTypes = {
-  value: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SlideCheckbox;
