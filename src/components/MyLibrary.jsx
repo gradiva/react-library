@@ -5,6 +5,7 @@ import NewBookForm from './NewBookForm';
 import '../css/library.css';
 
 const getInitialState = () => ({
+  formHidden: true,
   books: [
     { id: 'ssdf', title: 'Anna Karenina', author: 'Leo Tolstoy', year: '1873', hasRead: false },
     { id: 'sdfs', title: 'Madame Bovary', author: 'Gustave Flaubert', year: '1856', hasRead: false },
@@ -25,6 +26,7 @@ export default class MyLibrary extends React.PureComponent {
     this.addBook = this.addBook.bind(this);
     this.removeBookById = this.removeBookById.bind(this);
     this.toggleHasReadById = this.toggleHasReadById.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
   }
 
   addBook({ title, author, year, hasRead }) {
@@ -65,13 +67,19 @@ export default class MyLibrary extends React.PureComponent {
     }));
   }
 
+  toggleForm() {
+    this.setState(({ formHidden }) => ({
+      formHidden: !formHidden,
+    }));
+  }
+
   render() {
     const { books } = this.state;
 
     return (
       <main>
-        <Button value="New Book" onClick={() => { }} />
-        <NewBookForm addBook={this.addBook} />
+        <Button value="New Book" onClick={this.toggleForm} />
+        <NewBookForm displayForm={this.state.formHidden} addBook={this.addBook} />
         <BooksContainer
           removeBookById={this.removeBookById}
           toggleHasReadById={this.toggleHasReadById}

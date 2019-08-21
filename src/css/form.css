@@ -17,3 +17,11 @@
  form.book-form label {
   height: 28px;
 }
+
+.display-form {
+  display: block;
+}
+
+.hide-form {
+  display: none;
+}
