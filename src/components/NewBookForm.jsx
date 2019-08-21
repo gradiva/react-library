@@ -27,8 +27,8 @@ export default class NewBookForm extends React.PureComponent {
     const { displayForm } = this.props;
     let show;
     if (displayForm) {
-      show = 'display-form';
-    } else { show = 'hide-form'; }
+      show = 'hide-form';
+    } else { show = 'display-form'; }
     return show;
   }
 
