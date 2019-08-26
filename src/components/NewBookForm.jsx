@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Button from './Button';
 import '../css/form.css';
 
@@ -13,7 +14,6 @@ export default class NewBookForm extends React.PureComponent {
     this.statusRef = React.createRef();
 
     this.onAddBookClick = this.onAddBookClick.bind(this);
-    this.onToggleForm = this.onToggleForm.bind(this);
   }
 
   onAddBookClick() {
@@ -21,15 +21,6 @@ export default class NewBookForm extends React.PureComponent {
     const { title, author, year, status } = this.getInputValues();
 
     addBook({ title, author, year, status });
-  }
-
-  onToggleForm() {
-    const { displayForm } = this.props;
-    let show;
-    if (displayForm) {
-      show = 'hide-form';
-    } else { show = 'display-form'; }
-    return show;
   }
 
   getInputValues() {
@@ -42,8 +33,10 @@ export default class NewBookForm extends React.PureComponent {
   }
 
   render() {
+    const { hidden } = this.props;
+
     return (
-      <form className={`book-form ${this.onToggleForm()}`}>
+      <form className={cx('book-form', { hidden })}>
         <label htmlFor="title">
           Title
           <input ref={this.titleRef} type="text" name="title" />
@@ -56,11 +49,13 @@ export default class NewBookForm extends React.PureComponent {
           Year
           <input ref={this.yearRef} type="number" name="year" />
         </label>
-        <label htmlFor="status">
+        <label htmlFor="status" className="checkbox-label">
           Status
-          <input ref={this.statusRef} type="checkbox" name="status" />
+          <input ref={this.statusRef} type="checkbox" name="status" className="form-checkbox" />
         </label>
-        <Button onClick={this.onAddBookClick} value="Add Book" />
+        <div>
+          <Button className="button add-book" onClick={this.onAddBookClick} value="Add Book" />
+        </div>
       </form>
     );
   }
@@ -68,5 +63,5 @@ export default class NewBookForm extends React.PureComponent {
 
 NewBookForm.propTypes = {
   addBook: PropTypes.func.isRequired,
-  displayForm: PropTypes.bool.isRequired,
+  hidden: PropTypes.bool.isRequired,
 };

@@ -74,12 +74,12 @@ export default class MyLibrary extends React.PureComponent {
   }
 
   render() {
-    const { books } = this.state;
+    const { books, formHidden } = this.state;
 
     return (
       <main>
-        <Button value="New Book" onClick={this.toggleForm} />
-        <NewBookForm displayForm={this.state.formHidden} addBook={this.addBook} />
+        <Button className="button" value="New Book" onClick={this.toggleForm} />
+        <NewBookForm hidden={formHidden} addBook={this.addBook} />
         <BooksContainer
           removeBookById={this.removeBookById}
           toggleHasReadById={this.toggleHasReadById}
