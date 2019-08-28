@@ -8,6 +8,7 @@ export default class NewBookForm extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.formRef = React.createRef();
     this.titleRef = React.createRef();
     this.authorRef = React.createRef();
     this.yearRef = React.createRef();
@@ -17,10 +18,13 @@ export default class NewBookForm extends React.PureComponent {
   }
 
   onAddBookClick() {
-    const { addBook } = this.props;
+    const { addBook, hideNewBookForm } = this.props;
     const { title, author, year, status } = this.getInputValues();
 
     addBook({ title, author, year, status });
+    hideNewBookForm();
+
+    this.formRef.current.reset();
   }
 
   getInputValues() {
@@ -36,7 +40,7 @@ export default class NewBookForm extends React.PureComponent {
     const { hidden } = this.props;
 
     return (
-      <form className={cx('book-form', { hidden })}>
+      <form ref={this.formRef} className={cx('book-form', { hidden })}>
         <label htmlFor="title">
           Title
           <input ref={this.titleRef} type="text" name="title" />
@@ -63,5 +67,6 @@ export default class NewBookForm extends React.PureComponent {
 
 NewBookForm.propTypes = {
   addBook: PropTypes.func.isRequired,
+  hideNewBookForm: PropTypes.func.isRequired,
   hidden: PropTypes.bool.isRequired,
 };
