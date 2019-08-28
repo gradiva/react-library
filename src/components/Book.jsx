@@ -4,25 +4,8 @@ import Button from './Button';
 import SlideCheckbox from './SlideCheckbox';
 
 class Book extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.removeBook = this.removeBook.bind(this);
-    this.toggleHasRead = this.toggleHasRead.bind(this);
-  }
-
-  toggleHasRead() {
-    const { toggleHasReadById, book } = this.props;
-    toggleHasReadById(book.id);
-  }
-
-  removeBook() {
-    const { removeBookById, book } = this.props;
-    removeBookById(book.id);
-  }
-
   render() {
-    const { book } = this.props;
+    const { book, removeBook, toggleHasRead } = this.props;
     const { id, title, author, year, hasRead } = book;
 
     return (
@@ -36,10 +19,10 @@ class Book extends React.PureComponent {
             name="read-status"
             checked={hasRead}
             className="read-status"
-            onChange={this.toggleHasRead}
+            onChange={toggleHasRead}
           />
         </div>
-        <Button onClick={this.removeBook} value="Delete" />
+        <Button onClick={removeBook} value="Delete" />
       </div>
     );
   }
@@ -47,8 +30,8 @@ class Book extends React.PureComponent {
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
-  removeBookById: PropTypes.func.isRequired,
-  toggleHasReadById: PropTypes.func.isRequired,
+  removeBook: PropTypes.func.isRequired,
+  toggleHasRead: PropTypes.func.isRequired,
 };
 
 export default Book;

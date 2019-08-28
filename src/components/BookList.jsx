@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 import '../css/book.css';
 
-class BooksContainer extends React.PureComponent {
+class BookList extends React.PureComponent {
   render() {
-    const { books, removeBookById, toggleHasReadById } = this.props;
+    const { books, removeBook, toggleHasRead } = this.props;
 
     const bookItems = books.map((book) => (
       <Book
-        book={book}
-        removeBookById={removeBookById}
-        toggleHasReadById={toggleHasReadById}
+        book={(book)}
+        removeBook={() => removeBook(book.id)}
+        toggleHasRead={() => toggleHasRead(book.id)}
         key={`book-${book.id}`}
       />
     ));
@@ -27,10 +27,10 @@ class BooksContainer extends React.PureComponent {
   }
 }
 
-BooksContainer.propTypes = {
+BookList.propTypes = {
   books: PropTypes.array.isRequired,
-  removeBookById: PropTypes.func.isRequired,
-  toggleHasReadById: PropTypes.func.isRequired,
+  removeBook: PropTypes.func.isRequired,
+  toggleHasRead: PropTypes.func.isRequired,
 };
 
-export default BooksContainer;
+export default BookList;
